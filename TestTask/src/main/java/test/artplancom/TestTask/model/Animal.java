@@ -17,9 +17,9 @@ import java.time.LocalDate;
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
     private String name;
 
     @Enumerated(EnumType.STRING)
@@ -32,4 +32,15 @@ public class Animal {
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private Type type;
+    
+    @Column(name = "user_id")
+    private Long userId;
+    
+    public Animal(String name, Gender gender, LocalDate birthday, Type type, Long userId) {
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.type = type;
+        this.userId = userId;
+    }
 }
